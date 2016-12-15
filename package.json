@@ -23,6 +23,7 @@
   "homepage": "https://github.com/JacksonBates/pair-backend#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "concurrently": "^3.1.0",
     "express": "^4.14.0",
     "mongodb": "^2.2.11",
     "mongoose": "^4.7.1",
