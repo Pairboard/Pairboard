@@ -1,0 +1,38 @@
+{
+  "name": "pair-backend",
+  "version": "1.0.0",
+  "description": "A simple backend REST API for a pair programming match-up service.",
+  "main": "server.js",
+  "scripts": {
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha tests/**/*.test.js",
+    "dev": "nodemon server.js",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "start-lite": "concurrently \"npm run server\" \"npm run client\" \"node client/server/server\"",
+    "server": "node server.js",
+    "client": "node start-client.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JacksonBates/pair-backend.git"
+  },
+  "author": "Jackson Bates",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JacksonBates/pair-backend/issues"
+  },
+  "homepage": "https://github.com/JacksonBates/pair-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.11",
+    "mongoose": "^4.7.1",
+    "socket.io": "^1.7.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "expect": "^1.20.2",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "supertest": "^2.0.1"
+  }
+}
