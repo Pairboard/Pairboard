@@ -24,13 +24,13 @@ if ( !process.env.NODE_ENV === 'test' ) {
 };
 
 // Disable x-powered-by header which shows what software server is running (express);
-app.disable('x-powered-by');
+app.disable( 'x-powered-by' );
 
 app.use( require( './middleware/access-control-header' ));
 
 // Middleware for routes
 app.use( '/api/v1', require( './routes/api-v1' ));
-app.use( '/api/v2', require( './routes/api-v2')); 
+app.use( '/api/v2', require( './routes/api-v2' )); 
 
 app.set( 'port', ( process.env.PORT || 3001 ));
 server.listen( app.get( 'port' ), function() {

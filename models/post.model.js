@@ -10,4 +10,4 @@ var PostSchema = new Schema({
   interests: { type: String, default: '' }
 })
 
-module.exports = mongoose.model('Post', PostSchema);
+module.exports = mongoose.model( 'Post', PostSchema );

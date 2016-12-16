@@ -1,6 +1,6 @@
 # Pairboard
 
-Development verison of the Pairboard app. This currently has no live hosting or live database.
+Development version of the Pairboard app. This currently has no live hosting or live database.
 
 ## Getting started Unix Flavoured Terminals
 
@@ -20,4 +20,3 @@ Development verison of the Pairboard app. This currently has no live hosting or 
 
 In both cases, `npm start` will launch client and server concurrently. 
 There is no need to run them in separate terminals.
-

@@ -64,7 +64,7 @@ module.exports = {
       username, setup, interests
     });
     newPost.save( err => { 
-      if (err) res.status( 400 ).send( { status: 400, error: err });
+      if ( err ) res.status( 400 ).send( { status: 400, error: err });
       res.status( 201 ).send( { status: 201, data: newPost });
     });
   },
