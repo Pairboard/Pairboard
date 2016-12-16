@@ -5,6 +5,9 @@
   },
   "development": {
     "PORT": 3001,
-    "MONGODB_URI": "mongodb://localhost:27017/Posts"
+    "MONGODB_URI": "mongodb://localhost:27017/Posts",
+    "GH_LOCAL_ID": "b2069653c45eba29d010",
+    "GH_LOCAL_SECRET": "f56b98a9b0447f9811b7dda456761483b49be569",
+    "GH_LOCAL_URL": "http://localhost:3001/auth/github/callback"
   }
 }
