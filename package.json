@@ -6,6 +6,7 @@
   "scripts": {
     "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha tests/**/*.test.js",
     "dev": "nodemon server.js",
+    "build": "cd client && npm run build && cd ..",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "start-lite": "concurrently \"npm run server\" \"npm run client\" \"node client/server/server\"",
     "server": "node server.js",
