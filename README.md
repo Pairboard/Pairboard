@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Pairboard/Pairboard.svg?branch=master)](https://travis-ci.org/Pairboard/Pairboard)
+
 # Pairboard
 
 Development version of the Pairboard app. This currently has no live hosting or live database.
