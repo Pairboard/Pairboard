@@ -1,0 +1,17 @@
+{
+  "extends": ["standard"],
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "object-curly-spacing": ["error", "always"],
+    "semi": ["error", "always"],
+    "space-before-function-paren": ["error", {
+      "anonymous": "always",
+      "named": "never",
+      "asyncArrow": "always"
+    }]
+  }
+}
