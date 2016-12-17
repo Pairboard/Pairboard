@@ -11,7 +11,9 @@
     "start-lite": "concurrently \"npm run server\" \"npm run client\" \"node client/server/server\"",
     "server": "node server.js",
     "client": "node start-client.js",
-    "first": "npm install && cd client && npm install && cd .. && cp config/config_template.json config/config.json"
+    "first": "npm install && cd client && npm install && cd .. && cp config/config_template.json config/config.json",
+    "lint": "eslint \"*.js\" \"!(client)/**/*.js\"",
+    "lint-fix": "eslint --fix \"*.js\" \"!(client)/**/*.js\""
   },
   "repository": {
     "type": "git",
