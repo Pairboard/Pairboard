@@ -12,6 +12,7 @@
       "anonymous": "always",
       "named": "never",
       "asyncArrow": "always"
-    }]
+    }],
+    "space-in-parens": ["error", "always"]
   }
 }
