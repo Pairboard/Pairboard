@@ -1,0 +1,15 @@
+{
+  "extends": ["../.eslintrc", "plugin:react/recommended"],
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "node": false
+  },
+  "rules": {
+    "jsx-quotes": ["error", "prefer-double"],
+    "react/jsx-indent": ["error", 2]
+  }
+}
