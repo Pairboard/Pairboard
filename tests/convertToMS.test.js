@@ -6,7 +6,7 @@ var convertToMS = require("../controllers/convertToMS");
 describe("convertToMS", function(){
   // Checking invalid types: Number
   it("Should return 'Invalid Date' when passed 0120", function(){
-    convertToMS(0120).should.equal("Invalid Date");
+    convertToMS(120).should.equal("Invalid Date");
   })
   // Checking invalid types: Boolean
   it("Should return 'Invalid Date' when passed true", function(){
