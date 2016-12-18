@@ -6,7 +6,7 @@ const AppModalHeader = props => {
     <Modal.Header closeButton>
       <Modal.Title>{props.title}</Modal.Title>
     </Modal.Header>
-    );
+  );
 };
 
 export default AppModalHeader;

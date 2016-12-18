@@ -5,16 +5,16 @@ import CamperInfo from './CamperInfo';
 // import server from '../config/config';
 
 class Campers extends Component {
-  constructor(props) {
-    super(props);
-    var date = new Date(this.props.camper.endTime).toTimeString();
+  constructor( props ) {
+    super( props );
+    var date = new Date( this.props.camper.endTime ).toTimeString();
     var setup = this.props.camper.setup;
 
     this.state = {
-      end: (date.substr(0, 5) + ' ' + date.substr(9, date.length)),
-      techSetup: Array.isArray(setup) ? setup.join(', ') : setup,
+      end: ( date.substr( 0, 5 ) + ' ' + date.substr( 9, date.length ) ),
+      techSetup: Array.isArray( setup ) ? setup.join( ', ' ) : setup,
       id: this.props.camper_id,
-      display: true
+      display: true,
     };
 
     // this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,17 +35,17 @@ class Campers extends Component {
   // }
 
   render() {
-    if (this.state.display === false) {
+    if ( this.state.display === false ) {
       return null;
     } else {
       return (
-        <div className='user-card'>
+        <div className="user-card">
           <CamperPhoto username={this.props.camper.username} />
           <CamperInfo username={this.props.camper.username} interests={this.props.camper.interests}
             techSetup={this.state.techSetup} end={this.state.end} handleSubmit={this.handleSubmit}
             camper_id={this.props.camper._id} handleDelete={this.props.handleDelete}/>
         </div>
-        );
+      );
     }
   }
 }
