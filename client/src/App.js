@@ -139,9 +139,9 @@ class App extends Component {
           interests={this.state.interests} showInfo={showInfo} openInfo={this.openInfo}
           close={this.close} open={this.open} modalSelections={pairingTechs}
           handleDelete={this.handleDelete}/>
-          <AppFooter open={this.open} openInfo={this.openInfo} />
+        <AppFooter open={this.open} openInfo={this.openInfo} />
       </div>
-      );
+    );
   }
 }
 App.propTypes = {
