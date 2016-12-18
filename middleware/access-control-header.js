@@ -1,8 +1,7 @@
 // Add headers
 // Source: http://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue
 
-module.exports = function (req, res, next) {
-
+module.exports = function ( req, res, next ) {
   // Currently allows access from any origin
   res.setHeader( 'Access-Control-Allow-Origin', 'http://localhost:3000' );
 

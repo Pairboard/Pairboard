@@ -5,7 +5,7 @@ import AddModal from './AddModal';
 
 const AppBody = props => {
   return (
-    <div className='App-body'>
+    <div className="App-body">
       <CamperList campers={props.campers} handleDelete={props.handleDelete}/>
       <AddModal
         showModal={props.showModal}
@@ -19,7 +19,7 @@ const AppBody = props => {
      />
       <InfoModal showInfo={props.showInfo} close={props.close}/>
     </div>
-    );
-}
+  );
+};
 
 export default AppBody;

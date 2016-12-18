@@ -9,9 +9,9 @@ const AddModal = props => {
       <AppModalHeader title="Add your details to the board" />
       <Modal.Body>
         <ModalForm handleSubmit={props.handleSubmit} handleChange={props.handleChange} availableTime={props.availableTime} username={props.username} interests={props.interests} modalSelections={props.modalSelections}/>
-        </Modal.Body>
-      </Modal>
-    );
-}
+      </Modal.Body>
+    </Modal>
+  );
+};
 
 export default AddModal;
