@@ -8,6 +8,7 @@ Development version of the Pairboard app. This currently has no live hosting or 
 
 + Clone the repo
 + `npm run first` in the root folder
++ run `mongod` in a separate terminal
 + `npm start` in the root folder
 
 ## Getting started on Windows
@@ -16,6 +17,7 @@ Development version of the Pairboard app. This currently has no live hosting or 
 + `npm install` in the root folder
 + **AND** `npm install` in the client folder
 + In the config folder, make a copy of config_template.json and rename it config.json
++ run `mongod` in a separate terminal
 + `npm start` in the root folder
 
 ---
