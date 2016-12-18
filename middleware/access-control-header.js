@@ -4,7 +4,7 @@
 module.exports = function (req, res, next) {
 
   // Currently allows access from any origin
-  res.setHeader( 'Access-Control-Allow-Origin', 'http://pairboard.surge.sh' );
+  res.setHeader( 'Access-Control-Allow-Origin', 'http://localhost:3000' );
 
   // Request methods you wish to allow
   res.setHeader( 'Access-Control-Allow-Methods', 'GET, POST, DELETE' );
