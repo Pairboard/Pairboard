@@ -63,7 +63,7 @@ module.exports = {
       endTime: new Date().getTime() + endTime,
       username, setup, interests
     });
-    newPost.save( err => { 
+    newPost.save( err => {
       if ( err ) res.status( 400 ).send( { status: 400, error: err });
       res.status( 201 ).send( { status: 201, data: newPost });
     });
@@ -77,7 +77,7 @@ module.exports = {
       .findOneAndRemove( { '_id': id })
       .then( ( data ) => {
         // the following is modified since transition to mongoose...maybe redundant?
-        if ( !data._id ) return res.status( 404 ).send( { error: "Record not found." }); // Is this necessary now? Doesnt seem to work...
+        if ( !data ) return res.status( 404 ).send( { error: "Record not found." }); // Is this necessary now? Doesnt seem to work...
         res.status( 204 ).send();
       })
       .catch(err => {

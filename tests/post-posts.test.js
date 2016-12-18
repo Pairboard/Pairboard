@@ -1,6 +1,6 @@
 const request = require('supertest');
 const expect = require('expect');
-// const {ObjectID} = require('mongodb');
+const {ObjectID} = require('mongodb');
 
 const app = require('./../server');
 const Post = require('./../models/post.model');
@@ -174,5 +174,87 @@ describe('POST /posts', () => {
           done();
         }).catch(e => done(e));
       });
-  })
+  });
+});
+
+
+describe('DELETE /posts/:id', () => {
+
+  beforeEach(populatePosts);
+
+  it('should delete one post', (done) => {
+    const deletePost = {
+      id: posts[0]._id
+    }
+
+    request(app)
+      .delete(`/api/v1/posts/${deletePost.id}`)
+      .send(deletePost)
+      .expect(204)
+      .expect(res => {
+        // Check returned data
+        expect(res.body).toBeA('object');
+        expect(res.body).toEqual({});
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        // Check db
+        Post.find().then(res => {
+          expect(res.length).toBe(2);
+          done();
+        }).catch(e => done(e));
+      });
+  });
+
+  it('should respond with 400 if id is invalid', (done) => {
+    const deletePost = {
+      id: 123
+    }
+
+    request(app)
+      .delete(`/api/v1/posts/${deletePost.id}`)
+      .send(deletePost)
+      .expect(400)
+      .expect(res => {
+        // Check returned data
+        expect(res.body).toBeA('object');
+        expect(res.body.error).toExist();
+        expect(res.body.error).toBeA('string');
+        expect(res.body.data).toNotExist();
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        // Check db
+        Post.find().then(res => {
+          expect(res.length).toBe(3);
+          done();
+        }).catch(e => done(e));
+      });
+  });
+
+  it('should respond with 404 if id is not found', (done) => {
+    const deletePost = {
+      id: ObjectID()
+    }
+
+    request(app)
+      .delete(`/api/v1/posts/${deletePost.id}`)
+      .send(deletePost)
+      .expect(404)
+      .expect(res => {
+        // Check returned data
+        expect(res.body).toBeA('object');
+        expect(res.body.error).toExist();
+        expect(res.body.error).toBeA('string');
+        expect(res.body.data).toNotExist();
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        // Check db
+        Post.find().then(res => {
+          expect(res.length).toBe(3);
+          done();
+        }).catch(e => done(e));
+      });
+  });
 });

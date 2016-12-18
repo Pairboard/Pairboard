@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha tests/**/*.test.js",
+    "test-coverage": "export NODE_ENV=test || SET \"NODE_ENV=test\" && istanbul cover _mocha tests/**/*.test.js",
     "dev": "nodemon server.js",
     "build": "cd client && npm run build && cd ..",
     "start": "concurrently \"npm run server\" \"npm run client\"",
@@ -44,6 +45,7 @@
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "expect": "^1.20.2",
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
     "supertest": "^2.0.1"
