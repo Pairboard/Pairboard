@@ -3,9 +3,8 @@ import axios from 'axios';
 import io from 'socket.io-client';
 
 // Components
-import AppHeader from './components/AppHeader';
 import AppBody from './components/AppBody';
-import AppFooter from './components/AppFooter';
+import MainLayout from './components/MainLayout';
 
 import './App.css';
 import { withHash } from './History';
@@ -131,16 +130,17 @@ class App extends Component {
     let showInfo = this.props.hash === '#info';
     const pairingTechs = ['ScreenHero', 'TeamViewer', 'GoogleHangouts', 'Skype'];
     return (
-      <div className="App">
-        <AppHeader headerText="freeCodeCamp" appName="Remote Pairing Noticeboard" />
+      <MainLayout
+        handleOpenAdd={this.open}
+        handleOpenInfo={this.openInfo}
+      >
         <AppBody campers={this.state.campers} showModal={showModal} onHide={this.close}
           handleSubmit={this.handleSubmit} handleChange={this.handleChange}
           username={this.state.username} availableTime={this.state.availableTime}
           interests={this.state.interests} showInfo={showInfo} openInfo={this.openInfo}
           close={this.close} open={this.open} modalSelections={pairingTechs}
           handleDelete={this.handleDelete}/>
-        <AppFooter open={this.open} openInfo={this.openInfo} />
-      </div>
+      </MainLayout>
     );
   }
 }
