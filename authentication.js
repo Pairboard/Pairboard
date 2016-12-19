@@ -2,7 +2,7 @@ const passport = require( 'passport' );
 const GithubStrategy = require( 'passport-github2' ).Strategy;
 const jwt = require( 'jsonwebtoken' );
 
-const User = require( './models/user' );
+const User = require( './models/user.model' );
 const config = require( './oauth' );
 
 module.exports = passport.use( new GithubStrategy( {
@@ -16,6 +16,9 @@ function ( accessToken, refreshToken, profile, done ) {
       const newUser = new User( {
         gitId: profile.id,
         username: profile.username,
+        displayName: profile.displayName,
+        avatar: profile._json.avatar_URL,
+        location: profile._json.location,
       } );
       newUser.save().then( ( user ) => { return done( null, user ); } );
     } else {
