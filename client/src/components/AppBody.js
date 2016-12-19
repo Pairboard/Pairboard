@@ -8,16 +8,16 @@ const AppBody = props => {
     <div className="App-body">
       <CamperList campers={props.campers} handleDelete={props.handleDelete}/>
       <AddModal
-        showModal={props.showModal}
-        onHide={props.close}
+        show={props.showModal}
+        handleHide={props.close}
         handleSubmit={props.handleSubmit}
         handleChange={props.handleChange}
         username={props.username}
         availableTime={props.availableTime}
         interests={props.interests}
         modalSelections={props.modalSelections}
-     />
-      <InfoModal showInfo={props.showInfo} close={props.close}/>
+      />
+      <InfoModal show={props.showInfo} handleHide={props.close}/>
     </div>
   );
 };
