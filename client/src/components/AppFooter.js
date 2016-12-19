@@ -1,6 +1,5 @@
 import React from 'react';
-import AddButton from './AddButton';
-import InfoButton from './InfoButton';
+import IconButton from './IconButton';
 
 class AppFooter extends React.Component {
 
@@ -30,8 +29,22 @@ class AppFooter extends React.Component {
   render() {
     return (
       <div className="App-footer">
-        <AddButton open={this.props.open} />
-        <InfoButton openInfo={this.props.openInfo} />
+        <IconButton
+          className="add-button"
+          size="small"
+          icon="plus"
+          onClick={props.open}
+        >
+          Add
+        </IconButton>
+        <IconButton
+          className="info-button"
+          size="small"
+          icon="info-sign"
+          onClick={props.openInfo}
+        >
+          Info
+        </IconButton>
         {this.state.user ?
           <a href="http://localhost:3001/auth/logout" style={this.state.style}>@{this.state.user} Logout</a> :
           <a href="http://localhost:3001/auth/login" style={this.state.style}>Login</a>
