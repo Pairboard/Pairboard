@@ -1,22 +1,28 @@
 import React from 'react';
+
 import CamperList from './CamperList';
 import InfoModal from './InfoModal';
-import AddModal from './AddModal';
+import Modal from './Modal';
+import AddPairingNoticeForm from './AddPairingNoticeForm';
 
 const AppBody = props => {
   return (
     <div className="App-body">
       <CamperList campers={props.campers} handleDelete={props.handleDelete}/>
-      <AddModal
+      <Modal
         show={props.showModal}
         handleHide={props.close}
-        handleSubmit={props.handleSubmit}
-        handleChange={props.handleChange}
-        username={props.username}
-        availableTime={props.availableTime}
-        interests={props.interests}
-        modalSelections={props.modalSelections}
-      />
+        title="Add your details to the board"
+      >
+        <AddPairingNoticeForm
+          handleSubmit={props.handleSubmit}
+          username={props.username}
+          availableTime={props.availableTime}
+          pairingTechs={props.modalSelections}
+          interests={props.interests}
+          handleFieldChange={props.handleChange}
+        />
+      </Modal>
       <InfoModal show={props.showInfo} handleHide={props.close}/>
     </div>
   );
