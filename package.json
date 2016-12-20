@@ -13,8 +13,8 @@
     "server": "node server.js",
     "client": "node start-client.js",
     "first": "npm install && cd client && npm install && cd .. && cp config/config_template.json config/config.json",
-    "lint": "eslint \"*.js\" \"!(client)/**/*.js\"",
-    "lint-fix": "eslint --fix \"*.js\" \"!(client)/**/*.js\""
+    "lint": "eslint \"*.js\" \"!(client|coverage)/**/*.js\"",
+    "lint-fix": "eslint --fix \"*.js\" \"!(client|coverage)/**/*.js\""
   },
   "repository": {
     "type": "git",
