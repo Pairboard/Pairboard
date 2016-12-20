@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 
+import TextField from './TextField';
+
 export default function AddPairingNoticeForm( {
   handleSubmit,
   username,
@@ -11,38 +13,52 @@ export default function AddPairingNoticeForm( {
 } ) {
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="username">Forum username:</label>
-        <div className="input-group">
-          <span className="input-group-addon" id="basic-addon1">@</span>
-          <input pattern=".{1,20}" required title="Username between 1 and 20 characters" className="form-control" name="username" id="username" type="text" aria-describedby="basic-addon1" value={username} onChange={handleFieldChange} />
-        </div>
-      </div>
-      <div>
-        <label htmlFor="availableTime">Length of Time Available for Pairing (example: 03:00 = 3hrs):</label>
-        <div className="input-group">
-          <input required title="Please enter in the format HH:mm" className="form-control" name="availableTime" id="availableTime" type="text" pattern="\d{1,2}:\d{2}" aria-describedby="basic-addon2" value={availableTime} onChange={handleFieldChange} />
-          <span className="input-group-addon" id="basic-addon2">HH:mm</span>
-        </div>
-      </div>
+      <TextField
+        label="Forum username"
+        name="username"
+        id="username"
+        pattern=".{1,20}"
+        title="Username between 1 and 20 characters"
+        prefix="@"
+        value={username}
+        onChange={handleFieldChange}
+        required
+      />
+      <TextField
+        label="Length of Time Available for Pairing (example: 03:00 = 3hrs)"
+        name="availableTime"
+        id="availableTime"
+        title="Please enter in the format HH:mm"
+        postfix="HH:mm"
+        pattern="\d{1,2}:\d{2}"
+        value={availableTime}
+        onChange={handleFieldChange}
+        required
+      />
       <fieldset>
         <legend htmlFor="setup[]">Preferred Pairing Technology:</legend>
         {pairingTechs.map( type => (
-          <p>{type} <input name="setup[]" type="checkbox" value={type} onChange={handleFieldChange} /></p>
+          <p key={type}>{type} <input name="setup[]" type="checkbox" value={type} onChange={handleFieldChange} /></p>
         ) )}
       </fieldset>
-      <div>
-        <label htmlFor="other">
-          Other:
-        </label>
-        <input pattern=".{0}|.{1,30}" title="Keep it to minimum of 30 characters" className="form-control" name="other" id="other" type="text" value={other} onChange={handleFieldChange}/>
-      </div>
-      <div>
-        <label htmlFor="interests">
-          Interests:
-        </label>
-        <input pattern=".{0}|.{1,30}" title="Keep it to minimum of 30 characters" className="form-control" name="interests" id="interests" type="text" value={interests} onChange={handleFieldChange}/>
-      </div>
+      <TextField
+        label="Other"
+        name="other"
+        id="other"
+        title="Keep it to a minimum of 30 characters"
+        pattern=".{0}|.{1,30}"
+        value={other}
+        onChange={handleFieldChange}
+      />
+      <TextField
+        label="Interests"
+        name="interests"
+        id="interests"
+        title="Keep it to a minimum of 30 characters"
+        pattern=".{0}|.{1,30}"
+        value={interests}
+        onChange={handleFieldChange}
+      />
       <input className="btn btn-success modal-submit" type="submit" value="Submit" />
     </form>
   );
