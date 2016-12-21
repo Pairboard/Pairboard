@@ -34,7 +34,6 @@ export default class PairingNoticeList extends React.Component {
   fetchNotices() {
     axios( NOTICES_URL )
       .then( res => {
-        console.log( res );
         this.setState( {
           notices: res.data.map( post => ( {
             camper: {
@@ -52,7 +51,6 @@ export default class PairingNoticeList extends React.Component {
   }
 
   handleDeleteNotice( id ) {
-    console.log( 'delete', id );
     axios.delete( `${NOTICES_URL}/${id}` )
       .then( res => {
         if ( res.status === 204 ) {
