@@ -14,7 +14,7 @@ const passport = require( 'passport' );
 const jwt = require( 'jsonwebtoken' );
 
 var Post = require( './models/post.model' );
-const User = require( './models/user' );
+const User = require( './models/user.model' );
 const authCheck = require( './middleware/auth-check' );
 
 var url = process.env.MONGODB_URI;

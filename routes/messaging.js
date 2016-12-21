@@ -11,7 +11,7 @@ router.post( '/messages', jsonParser, messaging.submitMessage );
 
 router.get( '/messages/:id', messaging.getConversation );
 
-router.update( '/messages/:id', messaging.updateMessage );
+router.put( '/messages/:id', messaging.updateMessage );
 
 router.delete( '/messages/:id', messaging.deleteOneMessage );
 

@@ -9,13 +9,15 @@ module.exports = {
   /*
   / receives the sender and recipient username
   / opens a frontend route with Sender & Recip prepopulated,
-  / also prepops the hidden conversationID 
+  / also prepops the hidden conversationID
   / (a sha 1 of the participants in ABC order)
   */
     const sender = req.body.username;
     const recipient = req.body.poster;
     const conversationID = createConversationId( sender, recipient );
-    res.send( {
+    res.status( 200 ).send( {
+      sender,
+      recipient,
       conversationID,
     } );
   },
