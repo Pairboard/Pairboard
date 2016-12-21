@@ -16,22 +16,9 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state = {
-      campers: [],
-      username: '',
-      availableTime: '',
-      setup: [],
-      interests: '',
-    };
 
     this.close = () => {
       this.props.replaceHash( '' );
-      this.setState( {
-        username: '',
-        availableTime: '',
-        setup: [],
-        interests: '',
-      } );
     };
 
     this.open = () => {
