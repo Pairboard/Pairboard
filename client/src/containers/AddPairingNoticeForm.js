@@ -26,7 +26,7 @@ export default class AddPairingNoticeForm extends React.Component {
     let value;
     if ( event.target.name === 'setup[]' ) {
       // TODO HACK this should be doable without touching dom nodes
-      const inputs = [...document.getElementsByName( 'setup[]' )];
+      const inputs = [...document.getElementsByName( 'setup[]' )]; // getElementsByName returns an iterable, spread it into an array for access to filter and map
       value = inputs
         .filter( input => input.checked )
         .map( input => input.value );

@@ -20,9 +20,9 @@ export default function Modal( { children, show, handleHide, title, forceOpen = 
 Modal.propTypes = {
   children: PropTypes.node,
   show: PropTypes.bool.isRequired,
-  handleHide: PropTypes.func,
+  handleHide: PropTypes.func, // no need to specify when forceOpen is true
   title: PropTypes.node.isRequired,
-  forceOpen: PropTypes.bool,
+  forceOpen: PropTypes.bool, // default false
 };
 
 function noop() {
