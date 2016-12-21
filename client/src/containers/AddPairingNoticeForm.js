@@ -52,7 +52,7 @@ export default class AddPairingNoticeForm extends React.Component {
         if ( res.status === 201 ) {
           this.props.handleDidSubmit( res );
         } else {
-          throw new Error( `POST to ${ADD_PAIRING_NOTICE_URL} yielded status code ${res.status}: ${res.body}` );
+          throw new Error( `POST to ${ADD_PAIRING_NOTICE_URL} yielded status code ${res.status}: ${res.statusText}` );
         }
       } )
       .catch( err => console.error( err ) );
