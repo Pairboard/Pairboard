@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import IconButton from './IconButton';
+import Button from './Button';
 import FccIcon from './FccIcon';
 
 export default function MainLayout( { children, handleOpenAdd, handleOpenInfo, ...props } ) {
@@ -14,22 +14,22 @@ export default function MainLayout( { children, handleOpenAdd, handleOpenInfo, .
       </div>
       {children}
       <div className="App-footer">
-        <IconButton
+        <Button
           className="add-button"
-          size="small"
+          bsSize="small"
           icon="plus"
           onClick={handleOpenAdd}
         >
           Add
-        </IconButton>
-        <IconButton
+        </Button>
+        <Button
           className="info-button"
-          size="small"
+          bsSize="small"
           icon="info-sign"
           onClick={handleOpenInfo}
         >
           Info
-        </IconButton>
+        </Button>
       </div>
     </div>
   );
