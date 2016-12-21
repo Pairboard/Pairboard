@@ -56,7 +56,8 @@ app.get( '/user', authCheck(), ( req, res ) => {
 
 // Middleware for routes
 app.use( '/api/v1', require( './routes/api-v1' ) );
-app.use( '/api/v2', require( './routes/api-v2' ) );
+// app.use( '/api/v2', require( './routes/api-v2' ) );
+app.use( '/api/v2', require( './routes/messaging' ) );
 
 const authRoutes = require( './routes/auth' );
 app.use( '/auth', authRoutes );
