@@ -43,7 +43,7 @@ export default class AddPairingNoticeForm extends React.Component {
     const data = {
       username: this.state.username,
       availableTime: this.state.availableTime,
-      setup: this.state.other ? [this.state['setup[]'], this.state.other] : this.state['setup[]'],
+      setup: this.state.other ? [...this.state['setup[]'], this.state.other] : this.state['setup[]'],
       interests: this.state.interests,
     };
 
