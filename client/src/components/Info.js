@@ -1,14 +1,8 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
-import Modal from './Modal';
-
-export default function InfoModal( { show, handleHide } ) {
+export default function InfoModal() {
   return (
-    <Modal
-      show={show}
-      handleHide={handleHide}
-      title="About"
-    >
+    <div>
       <p>This pair noticeboard in intended only for use by FCC Forum participants - it doesn't work without a valid forum account.</p>
       <p>This was made in response to the week long <a href="https://forum.freecodecamp.com/t/computer-frontend-web-development-challenge-november-16-to-26/55986">front end challenge</a> organised by @P1xt.</p>
       <h1>Technology used</h1>
@@ -22,11 +16,6 @@ export default function InfoModal( { show, handleHide } ) {
       <p>I suspect I am using React all wrong - especially with the way I am dealing with form submissions, forcing redirects an refreshes all over the place. Doesn't seem very Reacty to me...</p>
       <h1>Further Development</h1>
       <p>I am open to further development of this idea. Now that the project is finished in the eyes of the 'contest', I am open to working with any collaborators. PM me on the forum: <a href="https://forum.freecodecamp.com/users/jacksonbates">JacksonBates</a></p>
-    </Modal>
+    </div>
   );
 }
-
-InfoModal.propTypes = {
-  show: PropTypes.bool.isRequired,
-  handleHide: PropTypes.func.isRequired,
-};

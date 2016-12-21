@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 import MainLayout from './components/MainLayout';
 import Modal from './components/Modal';
 import PairingNoticeList from './containers/PairingNoticeList';
-import InfoModal from './components/InfoModal';
+import Info from './components/Info';
 import AddPairingNoticeForm from './containers/AddPairingNoticeForm';
 
 import './App.css';
@@ -53,7 +53,13 @@ class App extends Component {
             socket={this.socket}
           />
         </Modal>
-        <InfoModal show={showInfo} handleHide={this.close} />
+        <Modal
+          show={showInfo}
+          handleHide={this.close}
+          title="About"
+        >
+          <Info />
+        </Modal>
       </MainLayout>
     );
   }
