@@ -50,7 +50,7 @@ export default class AddPairingNoticeForm extends React.Component {
     axios.post( ADD_PAIRING_NOTICE_URL, data )
       .then( ( res ) => {
         if ( res.status === 201 ) {
-          this.props.handleDidSubmit( res );
+          this.props.handleDidSubmit && this.props.handleDidSubmit();
         } else {
           throw new Error( `POST to ${ADD_PAIRING_NOTICE_URL} yielded status code ${res.status}: ${res.statusText}` );
         }
@@ -73,5 +73,5 @@ export default class AddPairingNoticeForm extends React.Component {
 AddPairingNoticeForm.displayName = 'Container(AddPairingNoticeForm)';
 
 AddPairingNoticeForm.propTypes = {
-  handleDidSubmit: PropTypes.func.isRequired,
+  handleDidSubmit: PropTypes.func,
 };
