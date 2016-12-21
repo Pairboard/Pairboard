@@ -51,6 +51,7 @@ export default class AddPairingNoticeForm extends React.Component {
       .then( ( res ) => {
         if ( res.status === 201 ) {
           this.props.handleDidSubmit && this.props.handleDidSubmit();
+          this.props.socket.emit( 'post', res.body );
         } else {
           throw new Error( `POST to ${ADD_PAIRING_NOTICE_URL} yielded status code ${res.status}: ${res.statusText}` );
         }
@@ -74,4 +75,5 @@ AddPairingNoticeForm.displayName = 'Container(AddPairingNoticeForm)';
 
 AddPairingNoticeForm.propTypes = {
   handleDidSubmit: PropTypes.func,
+  socket: PropTypes.any.isRequired,
 };
