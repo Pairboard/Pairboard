@@ -12,7 +12,9 @@ export default function MainLayout( { children, handleOpenAdd, handleOpenInfo, .
           </span>
         </p>
       </div>
-      {children}
+      <div className="App-body">
+        {children}
+      </div>
       <div className="App-footer">
         <Button
           className="add-button"

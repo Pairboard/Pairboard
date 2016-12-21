@@ -3,8 +3,11 @@ import axios from 'axios';
 import io from 'socket.io-client';
 
 // Components
-import AppBody from './components/AppBody';
 import MainLayout from './components/MainLayout';
+import Modal from './components/Modal';
+import CamperList from './components/CamperList';
+import InfoModal from './components/InfoModal';
+import AddPairingNoticeForm from './containers/AddPairingNoticeForm';
 
 import './App.css';
 import { withHash } from './History';
@@ -40,10 +43,9 @@ class App extends Component {
       this.props.replaceHash( '#info' );
     };
 
-    this.handleChange = this.handleChange.bind( this );
     this.fetchData = this.fetchData.bind( this );
-    this.handleSubmit = this.handleSubmit.bind( this );
     this.handleDelete = this.handleDelete.bind( this );
+    this.handlePairingNoticeFormAdded = this.handlePairingNoticeFormAdded.bind( this );
   }
 
   componentWillMount() {
@@ -69,27 +71,6 @@ class App extends Component {
       .catch( e => console.error( e ) );
   }
 
-  handleChange( e ) {
-    // Get checked checkboxes
-    if ( e.target.name === 'setup[]' ) {
-      const inputs = document.getElementsByName( 'setup[]' );
-      let setup = [];
-      // TODO: refactor
-      for ( let i = 0, len = inputs.length; i < len; i++ ) {
-        if ( inputs[i].checked ) {
-          setup.push( inputs[i].value );
-        }
-      }
-      this.setState( {
-        setup,
-      } );
-    } else {
-      this.setState( {
-        [e.target.id]: e.target.value,
-      } );
-    }
-  }
-
   handleDelete( id ) {
 //     console.log(id);
     const url = `/api/v1/posts/${id}`;
@@ -105,41 +86,31 @@ class App extends Component {
     } ).catch( e => console.log( e ) );
   }
 
-  handleSubmit( e ) {
-    e.preventDefault();
-    const post = {
-      username: this.state.username,
-      availableTime: this.state.availableTime,
-      setup: this.state.setup,
-      interests: this.state.interests,
-    };
-    const url = '/api/v1/posts';
-
-    axios.post( url, post ).then( res => {
-      if ( res.status === 201 ) {
-        // temporary solution, because API sends back nested data
-        this.fetchData();
-        this.socket.emit( 'post', res.body );
-      }
-    } ).catch( e => console.log( e ) );
+  handlePairingNoticeFormAdded( res ) {
+    this.fetchData();
+    this.socket.emit( 'post', res.body );
     this.close();
   }
 
   render() {
     let showModal = this.props.hash === '#add';
     let showInfo = this.props.hash === '#info';
-    const pairingTechs = ['ScreenHero', 'TeamViewer', 'GoogleHangouts', 'Skype'];
     return (
       <MainLayout
         handleOpenAdd={this.open}
         handleOpenInfo={this.openInfo}
       >
-        <AppBody campers={this.state.campers} showModal={showModal} onHide={this.close}
-          handleSubmit={this.handleSubmit} handleChange={this.handleChange}
-          username={this.state.username} availableTime={this.state.availableTime}
-          interests={this.state.interests} showInfo={showInfo} openInfo={this.openInfo}
-          close={this.close} open={this.open} modalSelections={pairingTechs}
-          handleDelete={this.handleDelete}/>
+        <CamperList campers={this.state.campers} handleDelete={this.handleDelete} />
+        <Modal
+          show={showModal}
+          handleHide={this.close}
+          title="Add your details to the board"
+        >
+          <AddPairingNoticeForm
+            handleDidSubmit={this.handlePairingNoticeFormAdded}
+          />
+        </Modal>
+        <InfoModal show={showInfo} handleHide={this.close} />
       </MainLayout>
     );
   }
