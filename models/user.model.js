@@ -11,6 +11,7 @@ let UserSchema = new mongoose.Schema( {
   programmingLanguages: Array,
   unreadMessages: Number,
   contacts: Array,
+  conversations: Array,
 } );
 
 module.exports = mongoose.model( 'User', UserSchema );

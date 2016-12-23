@@ -1,5 +1,6 @@
 const ObjectId = require( 'mongodb' ).ObjectID;
 const Message = require( '../models/message.model' );
+const User = require( '../models/user.model' );
 const createConversationId = require( './createConversationId' );
 
 module.exports = {
@@ -27,6 +28,21 @@ module.exports = {
   / shows current user's 'mailbox' - a list of contacts
   / listed in order of most recent messages
   */
+    const username = req.username;
+    User.find(
+      { username },
+      ( err, user ) => {
+        if ( err ) return err;
+        const conversations = user.conversations;
+        Message.find(
+          { conversations },
+          ( err, messages ) => {
+            if ( err ) return err;
+            res.json( messages );
+          }
+        );
+      }
+    );
   },
 
   getConversation: ( req, res ) => {
@@ -34,12 +50,36 @@ module.exports = {
   / shows all messages with the same conversationID
   / listed most recent first
   */
+    const conversationId = req.body.conversationId;
+    Message.find(
+      { conversationId },
+      ( err, messages ) => {
+        if ( err ) return err;
+        res.json( messages );
+      }
+    );
   },
 
   submitMessage: ( req, res ) => {
   /*
   / posts a message to the conversation thread
   */
+    const toUser = req.body.toUser;
+    const fromUser = req.body.fromUser;
+    const conversationId = createConversationId( toUser, fromUser );
+    const timeStamp = new Date();
+    const messageBody = req.body.messageBody;
+    const newMessage = Message( {
+      toUser,
+      fromUser,
+      conversationId,
+      timeStamp,
+      messageBody,
+    } );
+    newMessage.save( err => {
+      if ( err ) return err;
+      res.send( { status: 200, message: 'Message sent.' } );
+    } );
   },
 
   updateMessage: ( req, res ) => {
