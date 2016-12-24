@@ -1,4 +1,3 @@
-const ObjectId = require( 'mongodb' ).ObjectID;
 const Message = require( '../models/message.model' );
 const User = require( '../models/user.model' );
 const createConversationId = require( './createConversationId' );
@@ -50,7 +49,7 @@ module.exports = {
   / shows all messages with the same conversationID
   / listed most recent first
   */
-    const conversationId = req.body.conversationId;
+    const conversationId = req.params.id;
     Message.find(
       { conversationId },
       ( err, messages ) => {
@@ -66,6 +65,7 @@ module.exports = {
   */
     const toUser = req.body.toUser;
     const fromUser = req.body.fromUser;
+    // if conv is new, write it to both users
     const conversationId = createConversationId( toUser, fromUser );
     const timeStamp = new Date();
     const messageBody = req.body.messageBody;
@@ -88,6 +88,20 @@ module.exports = {
   / query might be to flag the post
   / or mark it as accepted / declined
   */
+    const id = req.params.id;
+    const status = req.query.status;
+    const flag = req.query.flag;
+    if ( !status && !flag ) {
+      res.json( { status: '200', message: 'Nothing to update.' } );
+    } else if ( status === 'accepted' ) {
+      Message.findByIdAndUpdate( id, { status: 'accepted' } );
+    } else if ( status === 'declined' ) {
+      Message.findByIdAndUpdate( id, { status: 'declined' } );
+    } else if ( flag === 'true' ) {
+      Message.findByIdAndUpdate( id, { status: true } );
+    } else {
+      res.json( { status: '400', message: 'Bad request.' } );
+    }
   },
 
   deleteOneMessage: ( req, res ) => {
@@ -95,6 +109,7 @@ module.exports = {
   / deletes message based on message id
   / (only sender can delete)
   */
+    const id = req.params.id;
+    Message.findByIdAndRemove( id );
   },
-
 };
