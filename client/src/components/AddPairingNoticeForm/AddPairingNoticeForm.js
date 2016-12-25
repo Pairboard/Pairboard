@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import TextField from './TextField';
+import TextField from '../TextField';
 
 export default function AddPairingNoticeForm( {
   handleSubmit,

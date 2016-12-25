@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import PairingNotice from './PairingNotice';
+import PairingNotice from '../PairingNotice';
 
 export default function PairingNoticeList( {
   notices,
@@ -22,6 +22,7 @@ export default function PairingNoticeList( {
 }
 
 PairingNoticeList.propTypes = {
+  // FIXME PropTypes.arrayOf rejects mobx observable arrays. MobX provides its own PropTypes to mitigate this but then this component would have to explicitly depend on MobX
   notices: PropTypes.arrayOf( PropTypes.shape( {
     camper: PropTypes.shape( {
       username: PropTypes.string.isRequired,

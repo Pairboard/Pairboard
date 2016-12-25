@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import io from 'socket.io-client';
 
 // Components
 import MainLayout from './components/MainLayout';
 import Modal from './components/Modal';
-import PairingNoticeList from './containers/PairingNoticeList';
+import PairingNoticeList from './components/PairingNoticeList';
 import Info from './components/Info';
-import AddPairingNoticeForm from './containers/AddPairingNoticeForm';
+import AddPairingNoticeForm from './components/AddPairingNoticeForm';
 
 import './App.css';
 import { withHash } from './History';
-import server from './config/config';
 
 class App extends Component {
 
@@ -30,10 +28,6 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
-    this.socket = io( server );
-  }
-
   render() {
     let showModal = this.props.hash === '#add';
     let showInfo = this.props.hash === '#info';
@@ -42,7 +36,7 @@ class App extends Component {
         handleOpenAdd={this.open}
         handleOpenInfo={this.openInfo}
       >
-        <PairingNoticeList socket={this.socket} />
+        <PairingNoticeList />
         <Modal
           show={showModal}
           handleHide={this.close}
@@ -50,7 +44,6 @@ class App extends Component {
         >
           <AddPairingNoticeForm
             handleDidSubmit={() => this.close()}
-            socket={this.socket}
           />
         </Modal>
         <Modal

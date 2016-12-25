@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
-import axios from 'axios';
 
-import AddPairingNoticeFormComponent from '../components/AddPairingNoticeForm';
+import AddPairingNoticeFormComponent from './AddPairingNoticeForm';
+import noticeStore from '../../stores/notices';
 
-const ADD_PAIRING_NOTICE_URL = '/api/v1/posts';
 const PAIRING_TECHS = ['ScreenHero', 'TeamViewer', 'GoogleHangouts', 'Skype'];
 
 export default class AddPairingNoticeForm extends React.Component {
@@ -47,16 +46,9 @@ export default class AddPairingNoticeForm extends React.Component {
       interests: this.state.interests,
     };
 
-    axios.post( ADD_PAIRING_NOTICE_URL, data )
-      .then( ( res ) => {
-        if ( res.status === 201 ) {
-          this.props.handleDidSubmit && this.props.handleDidSubmit();
-          this.props.socket.emit( 'post', res.body );
-        } else {
-          throw new Error( `POST to ${ADD_PAIRING_NOTICE_URL} yielded status code ${res.status}: ${res.statusText}` );
-        }
-      } )
-      .catch( err => console.error( err ) );
+    noticeStore.createNotice( data );
+
+    this.props.handleDidSubmit && this.props.handleDidSubmit();
   }
 
   render() {
@@ -71,9 +63,6 @@ export default class AddPairingNoticeForm extends React.Component {
   }
 }
 
-AddPairingNoticeForm.displayName = 'Container(AddPairingNoticeForm)';
-
 AddPairingNoticeForm.propTypes = {
   handleDidSubmit: PropTypes.func,
-  socket: PropTypes.any.isRequired,
 };
