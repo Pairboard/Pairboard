@@ -6,7 +6,6 @@ let UserSchema = new mongoose.Schema( {
   avatar: String,
   gitId: Number,
   location: String,
-  gender: String,
   aboutMe: String,
   languagesSpoken: Array,
   programmingLanguages: Array,

@@ -17,7 +17,7 @@ function ( accessToken, refreshToken, profile, done ) {
         gitId: profile.id,
         username: profile.username,
         displayName: profile.displayName,
-        avatar: profile._json.avatar_URL,
+        avatar: profile._json.avatar_url,
         location: profile._json.location,
       } );
       newUser.save().then( ( user ) => { return done( null, user ); } );

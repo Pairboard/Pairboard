@@ -4,7 +4,6 @@ const createConversationId = require( './createConversationId' );
 
 module.exports = {
 
-
   createMessage: ( req, res ) => {
   /*
   / receives the sender and recipient username
@@ -27,19 +26,25 @@ module.exports = {
   / shows current user's 'mailbox' - a list of contacts
   / listed in order of most recent messages
   */
-    const username = req.username;
+    const username = req.headers.username;
     User.find(
       { username },
       ( err, user ) => {
         if ( err ) return err;
-        const conversations = user.conversations;
-        Message.find(
-          { conversations },
-          ( err, messages ) => {
-            if ( err ) return err;
-            res.json( messages );
-          }
-        );
+        if ( user[0] ) {
+          const conversations = user.conversations;
+          Message.find(
+            { conversations },
+            ( err, messages ) => {
+              if ( err ) return err;
+              console.log( 'messages' );
+              res.json( messages );
+            }
+          );
+        } else {
+          console.log( 'No messages' );
+          res.status( 400 ).send( { status: '400', message: 'Bad request' } );
+        };
       }
     );
   },
@@ -65,7 +70,6 @@ module.exports = {
   */
     const toUser = req.body.toUser;
     const fromUser = req.body.fromUser;
-    // if conv is new, write it to both users
     const conversationId = createConversationId( toUser, fromUser );
     const timeStamp = new Date();
     const messageBody = req.body.messageBody;
@@ -78,6 +82,9 @@ module.exports = {
     } );
     newMessage.save( err => {
       if ( err ) return err;
+      // check if user has an existing conversation
+      // if no, add the convId to both users' conversastions arrays
+      // and add the users to each others' contacts arrays
       res.send( { status: 200, message: 'Message sent.' } );
     } );
   },
