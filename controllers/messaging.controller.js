@@ -34,11 +34,11 @@ module.exports = {
         if ( user[0] ) {
           const conversations = user.conversations;
           Message.find(
-            { conversations },
+            { conversations }, // test this
             ( err, messages ) => {
               if ( err ) return err;
               console.log( 'messages' );
-              res.json( messages );
+              res.json( messages ); // currently returning too much?
             }
           );
         } else {

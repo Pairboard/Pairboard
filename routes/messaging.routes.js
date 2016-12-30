@@ -1,5 +1,5 @@
 const router = require( 'express' ).Router();
-const messaging = require( '../controllers/messaging' );
+const messaging = require( '../controllers/messaging.controller' );
 const bodyParser = require( 'body-parser' );
 const jsonParser = bodyParser.json();
 
