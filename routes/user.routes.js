@@ -7,7 +7,7 @@ const jsonParser = bodyParser.json();
 /*
   / shows user with by id
   */
-router.get( '/user/:id', user.getuser );
+router.get( '/user/:id', user.getUser );
 
 /*
   / receives profile details for update
