@@ -85,7 +85,30 @@ module.exports = {
       // check if user has an existing conversation
       // if no, add the convId to both users' conversastions arrays
       // and add the users to each others' contacts arrays
-      res.send( { status: 200, message: 'Message sent.' } );
+      User.find( { conversations: conversationId }, ( err, data ) => {
+        if ( err ) return err;
+        if ( data[0] ) {
+          console.log( 'conversation found' );
+          res.send( { status: 200, message: 'Message sent.' } );
+        } else {
+          console.log( 'creating conversation thread' );
+          User.findOneAndUpdate(
+            { username: toUser },
+            { $push: { conversations: conversationId, contacts: fromUser } },
+            { safe: true, upsert: true },
+            ( err, model ) => {
+              console.log( err );
+            } );
+          User.findOneAndUpdate(
+            { username: fromUser },
+            { $push: { conversations: conversationId, contacts: toUser } },
+            { safe: true, upsert: true },
+            ( err, model ) => {
+              console.log( err );
+            } );
+          res.send( { status: 200, message: 'Message sent.' } );
+        }
+      } );
     } );
   },
 
