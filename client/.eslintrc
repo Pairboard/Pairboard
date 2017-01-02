@@ -11,5 +11,8 @@
   "rules": {
     "jsx-quotes": ["error", "prefer-double"],
     "react/jsx-indent": ["error", 2]
+  },
+  "globals": {
+    "process": false
   }
 }
