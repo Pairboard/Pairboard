@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Button as BootstrapButton, Glyphicon } from 'react-bootstrap';
 
-export default function Button( { children, icon, size, iconPosition = 'before', ...props } ) {
+export default function Button( { children, icon, iconPosition = 'before', ...props } ) {
   if ( icon && iconPosition === 'before' ) {
     return (
       <BootstrapButton {...props}>
