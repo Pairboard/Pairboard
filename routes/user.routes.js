@@ -3,7 +3,6 @@ const user = require( '../controllers/user.controller' );
 const bodyParser = require( 'body-parser' );
 const jsonParser = bodyParser.json();
 
-
 /*
   / shows user with by id
   */

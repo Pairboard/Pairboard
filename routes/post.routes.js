@@ -2,7 +2,6 @@
 var router = require( 'express' ).Router();
 var queries = require( '../controllers/queries.controller' );
 var bodyParser = require( 'body-parser' );
-var urlencodedParser = bodyParser.urlencoded( { extended: false } );
 const jsonParser = bodyParser.json();
 
 // POST /posts - add a post, input data in JSON

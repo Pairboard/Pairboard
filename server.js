@@ -7,13 +7,10 @@ var server = require( 'http' ).createServer( app );
 var io = require( 'socket.io' );
 io = io.listen( server );
 var mongoose = require( 'mongoose' );
-var mongodb = require( 'mongodb' );
-var mongo = mongodb.MongoClient;
 const cookieParser = require( 'cookie-parser' );
 const passport = require( 'passport' );
 const jwt = require( 'jsonwebtoken' );
 
-var Post = require( './models/post.model' );
 const User = require( './models/user.model' );
 const authCheck = require( './middleware/auth-check' );
 

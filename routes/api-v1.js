@@ -1,4 +1,3 @@
-// var ObjectId = require('mongodb').ObjectID;
 var router = require( 'express' ).Router();
 var queries = require( '../controllers/queries.controller' );
 var bodyParser = require( 'body-parser' );
