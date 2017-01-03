@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import TextField from './TextField';
+import TextField from '../TextField';
 
 export default function AddPairingNoticeForm( {
   handleSubmit,
@@ -10,9 +10,10 @@ export default function AddPairingNoticeForm( {
   other,
   interests,
   handleFieldChange,
+  ...rest
 } ) {
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} {...rest}>
       <TextField
         label="Forum username"
         name="username"

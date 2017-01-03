@@ -13,8 +13,8 @@
     "server": "node server.js",
     "client": "node start-client.js",
     "first": "npm install && cd client && npm install && cd .. && cp config/config_template.json config/config.json",
-    "lint": "eslint \"*.js\" \"!(client)/**/*.js\"",
-    "lint-fix": "eslint --fix \"*.js\" \"!(client)/**/*.js\""
+    "lint": "eslint \"*.js\" \"!(client|coverage)/**/*.js\"",
+    "lint-fix": "eslint --fix \"*.js\" \"!(client|coverage)/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -31,10 +31,13 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "jsonwebtoken": "^7.2.1",
+    "mobx": "^2.7.0",
     "mongodb": "^2.2.11",
     "mongoose": "^4.7.1",
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
     "socket.io": "^1.7.2"
   },
   "devDependencies": {
@@ -46,6 +49,7 @@
     "eslint-plugin-standard": "^2.0.1",
     "expect": "^1.20.2",
     "istanbul": "^0.4.5",
+    "mobx-react": "^4.0.4",
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
     "supertest": "^2.0.1"
