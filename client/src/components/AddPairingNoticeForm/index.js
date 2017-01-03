@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 
+import omit from 'ramda/src/omit';
+
 import AddPairingNoticeFormComponent from './AddPairingNoticeForm';
 import noticeStore from '../../stores/notices';
 
@@ -52,12 +54,15 @@ export default class AddPairingNoticeForm extends React.Component {
   }
 
   render() {
+    const rest = omit( ['handleDidSubmit'] )( this.props );
+
     return (
       <AddPairingNoticeFormComponent
         handleFieldChange={this.handleFieldChange}
         handleSubmit={this.handleSubmit}
         pairingTechs={PAIRING_TECHS}
-        {...this.state} // pass in the values of the form fields
+        {...omit( ['setup[]'] )( this.state )} // pass in the values of the form fields except `setup[]`
+        {...rest}
       />
     );
   }

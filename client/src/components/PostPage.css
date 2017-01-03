@@ -1,0 +1,13 @@
+
+/* FIXME make me prettier */
+
+.post-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-form {
+  text-align: left;
+  max-width: 500px;
+}

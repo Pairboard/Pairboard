@@ -34,7 +34,7 @@
   color: white;
 }
 
-.App-footer>.add-button {
+.App-footer .btn {
   background-color: #006400;
   border-color: #006400;
   color: white;
@@ -43,25 +43,7 @@
   transition: backgroup 5s;
 }
 
-.App-footer>.add-button:hover {
-  background-color: white;
-  border-color: white;
-  color: #006400;
-  font-size: x-large;
-  -webkit-transition: background 1s;
-  transition: background 1s;
-}
-
-.App-footer>.info-button {
-  background-color: #006400;
-  border-color: #006400;
-  color: white;
-  font-size: x-large;
-  -webkit-transition: background 5s;
-  transition: backgroup 5s;
-}
-
-.App-footer>.info-button:hover {
+.App-footer .btn:hover {
   background-color: white;
   border-color: white;
   color: #006400;
