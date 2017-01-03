@@ -14,7 +14,7 @@ const passport = require( 'passport' );
 const jwt = require( 'jsonwebtoken' );
 
 var Post = require( './models/post.model' );
-const User = require( './models/user' );
+const User = require( './models/user.model' );
 const authCheck = require( './middleware/auth-check' );
 
 var url = process.env.MONGODB_URI;
@@ -56,7 +56,9 @@ app.get( '/user', authCheck(), ( req, res ) => {
 
 // Middleware for routes
 app.use( '/api/v1', require( './routes/api-v1' ) );
-app.use( '/api/v2', require( './routes/api-v2' ) );
+// app.use( '/api/v2', require( './routes/api-v2' ) );
+app.use( '/api/v2', require( './routes/messaging.routes' ) );
+app.use( '/api/v2', require( './routes/user.routes' ) );
 
 const authRoutes = require( './routes/auth' );
 app.use( '/auth', authRoutes );
