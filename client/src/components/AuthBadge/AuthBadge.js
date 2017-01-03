@@ -19,7 +19,7 @@ export default function AuthBadge( { pending, username } ) {
   if ( username ) {
     return (
       <div className="AuthBadge">
-        <a href={`${SERVER_HOST}/auth/logout`}><span className="AuthBadge_username">{username}</span></a>
+        <a href={`${SERVER_HOST}/auth/logout`}><span className="AuthBadge_username">@{username}</span></a>
         <CamperImage username={username} className="AuthBadge_image" />
       </div>
     );
