@@ -44,7 +44,7 @@ const populatePosts = ( done ) => {
     const postTwo = new Post( posts[1] ).save();
     const postThree = new Post( posts[2] ).save();
 
-    return Promise.all( [postOne, postTwo] );
+    return Promise.all( [postOne, postTwo, postThree] );
   } ).then( () => done() );
 };
 

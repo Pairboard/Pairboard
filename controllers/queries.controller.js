@@ -1,4 +1,3 @@
-var mongodb = require( 'mongodb' );
 var ObjectId = require( 'mongodb' ).ObjectID;
 var convertToMS = require( './convertToMS' );
 var Post = require( '../models/post.model' );
@@ -23,7 +22,7 @@ module.exports = {
       interests: interests,
     } );
     newPost.save( err => {
-      if ( err ) return handleError( err );
+      if ( err ) return err;
       res.redirect( 'http://pairboard.surge.sh' );
     } );
   },
@@ -35,7 +34,7 @@ module.exports = {
     Post.find(
       { endTime: { $gt: now } },
       ( err, posts ) => {
-        if ( err ) return handleError( err );
+        if ( err ) return err;
         res.json( posts );
       } );
   },
@@ -60,7 +59,9 @@ module.exports = {
     const newPost = Post( {
       postTime: new Date().getTime(),
       endTime: new Date().getTime() + endTime,
-      username, setup, interests,
+      username,
+      setup,
+      interests,
     } );
     newPost.save( err => {
       if ( err ) res.status( 400 ).send( { status: 400, error: err } );
@@ -80,7 +81,7 @@ module.exports = {
         res.status( 204 ).send();
       } )
       .catch( err => {
-        return res.status( 400 ).send( { error: 'Bad request.' } );
+        return res.status( 400 ).send( { error: 'Bad request.', message: err } );
       } );
   },
 };

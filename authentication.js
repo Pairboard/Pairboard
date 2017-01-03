@@ -1,6 +1,6 @@
 const passport = require( 'passport' );
 const GithubStrategy = require( 'passport-github2' ).Strategy;
-const jwt = require( 'jsonwebtoken' );
+// const jwt = require( 'jsonwebtoken' );
 
 const User = require( './models/user.model' );
 const config = require( './oauth' );
