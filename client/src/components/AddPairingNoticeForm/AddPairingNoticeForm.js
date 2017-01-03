@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import TextField from '../TextField';
+import AutoFocus from '../AutoFocus';
 
 export default function AddPairingNoticeForm( {
   handleSubmit,
@@ -14,17 +15,22 @@ export default function AddPairingNoticeForm( {
 } ) {
   return (
     <form onSubmit={handleSubmit} {...rest}>
-      <TextField
-        label="Forum username"
-        name="username"
-        id="username"
-        pattern=".{1,20}"
-        title="Username between 1 and 20 characters"
-        prefix="@"
-        value={username}
-        onChange={handleFieldChange}
-        required
-      />
+      <AutoFocus>
+        {( ref ) => (
+          <TextField
+            label="Forum username"
+            name="username"
+            id="username"
+            pattern=".{1,20}"
+            title="Username between 1 and 20 characters"
+            prefix="@"
+            value={username}
+            onChange={handleFieldChange}
+            getInputRef={ref}
+            required
+          />
+        )}
+      </AutoFocus>
       <TextField
         label="Length of Time Available for Pairing (example: 03:00 = 3hrs)"
         name="availableTime"
