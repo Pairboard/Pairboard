@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
 
 import omit from 'lodash/omit';
+import uniq from 'lodash/uniq';
+import without from 'lodash/without';
+import intersection from 'lodash/intersection';
 
 import AddPairingNoticeFormComponent from './AddPairingNoticeForm';
 import noticeStore from '../../stores/notices';
@@ -26,11 +29,11 @@ export default class AddPairingNoticeForm extends React.Component {
   handleFieldChange( event ) {
     let value;
     if ( event.target.name === 'setup[]' ) {
-      // TODO HACK this should be doable without touching dom nodes
-      const inputs = [...document.getElementsByName( 'setup[]' )]; // getElementsByName returns an iterable, spread it into an array for access to filter and map
-      value = inputs
-        .filter( input => input.checked )
-        .map( input => input.value );
+      if ( event.target.checked ) {
+        value = uniq( [...this.state['setup[]'], event.target.value] );
+      } else {
+        value = without( this.state['setup[]'], [event.target.value] );
+      }
     } else {
       value = event.target.value;
     }
@@ -44,7 +47,10 @@ export default class AddPairingNoticeForm extends React.Component {
     const data = {
       username: this.state.username,
       availableTime: this.state.availableTime,
-      setup: this.state.other ? [...this.state['setup[]'], this.state.other] : this.state['setup[]'],
+      setup: this.state.other
+        ? [...intersection( PAIRING_TECHS, this.state['setup[]'] ), this.state.other]
+        : intersection( PAIRING_TECHS, this.state['setup[]'] ),
+        // intersection ensures the same order as PAIRING_TECHS
       interests: this.state.interests,
     };
 
