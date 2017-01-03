@@ -7,6 +7,7 @@ import intersection from 'lodash/intersection';
 
 import AddPairingNoticeFormComponent from './AddPairingNoticeForm';
 import noticeStore from '../../stores/notices';
+import authStore from '../../stores/auth';
 
 const PAIRING_TECHS = ['ScreenHero', 'TeamViewer', 'GoogleHangouts', 'Skype'];
 
@@ -15,7 +16,7 @@ export default class AddPairingNoticeForm extends React.Component {
     super( props );
 
     this.state = {
-      username: '',
+      username: authStore.username || '',
       availableTime: '',
       'setup[]': [],
       other: '',
@@ -53,6 +54,8 @@ export default class AddPairingNoticeForm extends React.Component {
         // intersection ensures the same order as PAIRING_TECHS
       interests: this.state.interests,
     };
+
+    // FIXME prevent submit when not signed in, and make a way to show the user
 
     noticeStore.createNotice( data );
 

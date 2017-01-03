@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
+import AuthBadge from './AuthBadge';
 import Button from './Button';
 import FccIcon from './FccIcon';
 
@@ -13,6 +14,7 @@ export default function MainLayout( { children } ) {
         <h1 className="MainLayout_header_title">
           FreeCodeCamp <FccIcon /> Remote Pairing Noticeboard
         </h1>
+        <AuthBadge />
       </div>
       <div className="MainLayout_body">
         {children}
