@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 
+import omit from 'lodash/omit';
+
 import AddPairingNoticeFormComponent from './AddPairingNoticeForm';
 import noticeStore from '../../stores/notices';
 
@@ -52,12 +54,15 @@ export default class AddPairingNoticeForm extends React.Component {
   }
 
   render() {
+    const rest = omit( this.props, ['handleDidSubmit'] );
+
     return (
       <AddPairingNoticeFormComponent
         handleFieldChange={this.handleFieldChange}
         handleSubmit={this.handleSubmit}
         pairingTechs={PAIRING_TECHS}
-        {...this.state} // pass in the values of the form fields
+        {...omit( this.state, ['setup[]'] )} // pass in the values of the form fields except `setup[]`
+        {...rest}
       />
     );
   }

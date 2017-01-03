@@ -10,9 +10,10 @@ export default function AddPairingNoticeForm( {
   other,
   interests,
   handleFieldChange,
+  ...rest
 } ) {
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} {...rest}>
       <TextField
         label="Forum username"
         name="username"

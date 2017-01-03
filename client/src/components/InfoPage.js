@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function InfoModal() {
+export default function InfoPage() {
   return (
     <div>
       <p>This pair noticeboard in intended only for use by FCC Forum participants - it doesn't work without a valid forum account.</p>
