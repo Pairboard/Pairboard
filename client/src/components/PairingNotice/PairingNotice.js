@@ -4,6 +4,8 @@ import format from 'date-fns/format';
 import CamperImage from '../CamperImage';
 import Button from '../Button';
 
+import './PairingNotice.css';
+
 export default function PairingNotice( {
   camper,
   endTime,
@@ -12,24 +14,24 @@ export default function PairingNotice( {
   handleDelete,
 } ) {
   return (
-    <div className="user-card">
-      <a href={`https://forum.freecodecamp.com/users/${camper.username}`}>
-        <CamperImage username={camper.username} />
+    <div className="PairingNotice_container">
+      <a href={`https://forum.freecodecamp.com/users/${camper.username}`} className="PairingNotice_image-link">
+        <CamperImage username={camper.username} className="PairingNotice_image" />
       </a>
-      <div className="user-card-info">
-        <p className="user-card-name">
+      <div className="PairingNotice_info">
+        <p className="PairingNotice_info_username">
           <a href={`https://forum.freecodecamp.com/users/${camper.username}`}>
             {camper.username}
           </a>
         </p>
-        <p className="user-card-interests">
+        <p className="PairingNotice_info_interests">
           {interests}
         </p>
-        <p className="user-card-setup">
+        <p className="PairingNotice_info_setup">
           <b>Preferred Pairing Technology(s):</b>
           {pairingTechs.join( ' ' )}
         </p>
-        <p className="user-card-availability">
+        <p className="PairingNotice_info_availability">
           <b>Available until:</b> {format( new Date( endTime ), 'h:mma ddd Do MMM ([GMT]Z)' )}
         </p>
         <Button

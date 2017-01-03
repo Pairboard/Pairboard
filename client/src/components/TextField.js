@@ -6,6 +6,7 @@ export default function TextField( {
   prefix = null,
   postfix = null,
   id,
+  getInputRef,
   ...rest
 } ) {
   id = id || name; // If there is no id, default to the field name
@@ -33,6 +34,7 @@ export default function TextField( {
           id={id}
           className="form-control"
           aria-describedby={ariaDescribedBy}
+          ref={getInputRef}
           {...rest}
         />
         {postfix &&
@@ -51,4 +53,5 @@ TextField.propTypes = {
   id: PropTypes.string,
   prefix: PropTypes.node,
   postfix: PropTypes.node,
+  getInputRef: PropTypes.func,
 };

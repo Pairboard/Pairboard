@@ -8,18 +8,16 @@ import './MainLayout.css';
 
 export default function MainLayout( { children } ) {
   return (
-    <div className="App">
-      <div className="App-header">
-        <p>
-          <span className="header-text pull-left">
-            FreeCodeCamp <FccIcon /> Remote Pairing Noticeboard
-          </span>
-        </p>
+    <div className="MainLayout">
+      <div className="MainLayout_header">
+        <h1 className="MainLayout_header_title">
+          FreeCodeCamp <FccIcon /> Remote Pairing Noticeboard
+        </h1>
       </div>
-      <div className="App-body">
+      <div className="MainLayout_body">
         {children}
       </div>
-      <div className="App-footer">
+      <div className="MainLayout_footer">
         <Link to="/">
           <Button
             bsSize="small"
@@ -30,7 +28,6 @@ export default function MainLayout( { children } ) {
         </Link>
         <Link to="/post">
           <Button
-            className="add-button"
             bsSize="small"
             icon="plus"
           >
@@ -39,7 +36,6 @@ export default function MainLayout( { children } ) {
         </Link>
         <Link to="/info">
           <Button
-            className="info-button"
             bsSize="small"
             icon="info-sign"
           >

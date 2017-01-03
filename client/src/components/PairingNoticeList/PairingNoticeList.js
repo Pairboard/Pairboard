@@ -2,21 +2,21 @@ import React, { PropTypes } from 'react';
 
 import PairingNotice from '../PairingNotice';
 
+import './PairingNoticeList.css';
+
 export default function PairingNoticeList( {
   notices,
   handleDeleteNotice,
 } ) {
   return (
-    <div className="container">
-      <div className="inner-container">
-        {notices.map( ( notice ) => (
-          <PairingNotice
-            key={notice.id}
-            handleDelete={() => handleDeleteNotice( notice.id )}
-            {...notice}
-          />
-        ) )}
-      </div>
+    <div className="PairingNoticeList_container">
+      {notices.map( ( notice ) => (
+        <PairingNotice
+          key={notice.id}
+          handleDelete={() => handleDeleteNotice( notice.id )}
+          {...notice}
+        />
+      ) )}
     </div>
   );
 }
