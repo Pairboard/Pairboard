@@ -1,0 +1,8 @@
+
+.PairingNoticeList_container {
+  margin: 1rem auto;
+  max-width: 1200px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
