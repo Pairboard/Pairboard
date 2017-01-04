@@ -36,6 +36,14 @@ export default function MainLayout( { children } ) {
             Add
           </Button>
         </Link>
+        <Link to="/messages">
+          <Button
+            bsSize="small"
+            icon="envelope"
+          >
+            Messages
+          </Button>
+        </Link>
         <Link to="/info">
           <Button
             bsSize="small"
