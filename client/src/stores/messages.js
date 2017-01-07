@@ -1,7 +1,7 @@
 import { extendObservable } from 'mobx';
 import axios from 'axios';
 
-import getSocket from '../socket';
+import authStore from './auth';
 
 const MESSAGES_URL = '/api/v2/messages';
 
@@ -10,7 +10,8 @@ class MessageStore {
     extendObservable( this, {
       messages: [],
     } );
-    this.socket = getSocket();
+
+    authStore.checkAuth();
 
     // FIXME this is a potential memory leak, remove the listeners if it ever becomes appropriate
     // this.socket.on( 'post', () => this.fetchAllNotices() );
@@ -20,7 +21,7 @@ class MessageStore {
   fetchAllMessages() {
     axios( MESSAGES_URL, {
       headers:
-        { 'username': 'JacksonBates' },
+        { 'username': authStore.username },
     } )
       .then( res => {
         this.messages = res.data.map( message => ( {

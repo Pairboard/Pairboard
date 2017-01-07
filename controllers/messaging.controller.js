@@ -27,18 +27,20 @@ module.exports = {
   / listed in order of most recent messages
   */
     const username = req.headers.username;
+    console.log( username );
     User.find(
       { username },
       ( err, user ) => {
         if ( err ) return err;
         if ( user[0] ) {
-          const conversations = user.conversations;
+          const contacts = user[0].contacts;
+          console.log( contacts );
           Message.find(
-            { conversations }, // test this
-            ( err, messages ) => {
+            { contacts }, // test this
+            ( err, contactsList ) => {
               if ( err ) return err;
-              console.log( 'messages' );
-              res.json( messages ); // currently returning too much?
+              console.log( contacts );
+              res.json( contactsList ); // currently returning too much?
             }
           );
         } else {

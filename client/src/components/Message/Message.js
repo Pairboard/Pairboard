@@ -7,19 +7,11 @@ import Button from '../Button';
 import './Message.css';
 
 export default function Message( {
-  toUser,
-  fromUser,
-  conversationId,
-  timeStamp,
-  messageBody,
+  contacts,
 } ) {
   return (
     <div className="Message_container">
-      <p>{toUser}</p>
-      <p>{fromUser}</p>
-      <p>{conversationId}</p>
-      <p>{timeStamp}</p>
-      <p>{messageBody}</p>
+      <p>{contacts}</p>
     </div>
   );
 }
