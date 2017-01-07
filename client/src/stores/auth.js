@@ -10,6 +10,7 @@ class AuthStore {
     extendObservable( this, {
       pending: true,
       username: null,
+      _id: null,
     } );
   }
 
@@ -21,6 +22,7 @@ class AuthStore {
       .then( res => {
         if ( res.status === 201 ) {
           this.username = res.data.username;
+          this._id = res.data._id;
         } else {
           throw new Error( `GET to ${CURRENT_USER_URL} yielded status code ${res.status}: ${res.statusText}` );
         }
@@ -29,6 +31,7 @@ class AuthStore {
       .catch( ( err ) => {
         if ( typeof err.response.status === 'number' && err.response.status === 401 ) {
           this.username = null;
+          this._id = null;
           this.pending = false;
         } else {
           console.error( err );

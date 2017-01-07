@@ -13,6 +13,7 @@ class AuthBadgeConnected extends React.Component {
       <AuthBadgeComponent
         pending={authStore.pending}
         username={authStore.username}
+        _id={authStore._id}
       />
     );
   }

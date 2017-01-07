@@ -13,7 +13,6 @@ class ContactListConnected extends React.Component {
     return (
       <ContactListComponent
         contacts={contactStore.contacts}
-        handleDeleteContact={( id ) => contactStore.deleteContact( id )}
       />
     );
   }
