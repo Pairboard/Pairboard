@@ -1,4 +1,5 @@
 // This file should be .gitignored
+// This file should also be updated with Pairboard keys
 
 const ids = {
   github: {

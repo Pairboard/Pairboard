@@ -28,6 +28,7 @@ class ContactStore {
         this.contacts = res.data.contacts.map( ( element, i ) => ( {
           key: i,
           contact: {
+            // should include contact avatars (from github, not fcc)
             username: element,
           },
         } ) );

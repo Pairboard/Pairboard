@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import format from 'date-fns/format';
 
 import CamperImage from '../CamperImage';
+// CamperImage should be replace with github avatar
+
 import Button from '../Button';
 
 import './Contact.css';
