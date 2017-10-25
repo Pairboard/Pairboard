@@ -16,15 +16,18 @@ const authCheck = require( './middleware/auth-check' );
 
 var url = process.env.MONGODB_URI;
 
-mongoose.connect( url );
+const promise = mongoose.connect( url, {
+  useMongoClient: true,
+} );
 
-var db = mongoose.connection;
-db.on( 'error', console.error.bind( console, 'connection error:' ) );
-if ( !process.env.NODE_ENV === 'test' ) {
-  db.once( 'open', function () {
-    console.log( 'DB Connected' );
-  } );
-};
+promise.then( ( db ) => {
+  db.on( 'error', console.error.bind( console, 'connection error:' ) );
+  if ( !process.env.NODE_ENV === 'test' ) {
+    db.once( 'open', function () {
+      console.log( 'DB Connected' );
+    } );
+  }
+} );
 
 // Disable x-powered-by header which shows what software server is running (express);
 app.disable( 'x-powered-by' );
