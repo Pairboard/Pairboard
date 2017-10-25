@@ -15,6 +15,7 @@ export default function Contact( {
     <div className="Contact_container">
       <CamperImage username={contact.username} />
       <p>{contact.username}</p>
+      <p>{contact.gitId}</p>
     </div>
   );
 }

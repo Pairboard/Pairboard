@@ -30,6 +30,7 @@ class ContactStore {
           contact: {
             // should include contact avatars (from github, not fcc)
             username: element,
+            gitId: element.gitId,
           },
         } ) );
       } )
