@@ -4,7 +4,6 @@ const GithubStrategy = require( 'passport-github2' ).Strategy;
 // const jwt = require( 'jsonwebtoken' );
 
 const User = require( './models/user.model' );
-const config = require( './oauth' );
 
 module.exports = passport.use( new GithubStrategy( {
   clientID: process.env.CLIENT_ID,
