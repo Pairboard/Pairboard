@@ -16,6 +16,9 @@ const authCheck = require( './middleware/auth-check' );
 
 var url = process.env.MONGODB_URI;
 
+// Plug in bluebird promise library
+mongoose.Promise = require( 'bluebird' );
+
 const promise = mongoose.connect( url, {
   useMongoClient: true,
 } );
