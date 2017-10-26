@@ -1,5 +1,5 @@
 require( './config/config.js' );
-require( './authentication' );
+if ( process.env.NODE_ENV !== 'test' ) require( './authentication' );
 
 var express = require( 'express' );
 var app = express();
@@ -15,6 +15,9 @@ const User = require( './models/user.model' );
 const authCheck = require( './middleware/auth-check' );
 
 var url = process.env.MONGODB_URI;
+
+// Plug in bluebird promise library
+mongoose.Promise = require( 'bluebird' );
 
 const promise = mongoose.connect( url, {
   useMongoClient: true,
