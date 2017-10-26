@@ -39,3 +39,4 @@ jspm_packages
 # Config file for sensitive data
 config/config.json
 client/build/
+.env
