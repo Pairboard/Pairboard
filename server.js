@@ -1,5 +1,5 @@
 require( './config/config.js' );
-require( './authentication' );
+if ( process.env.NODE_ENV !== 'test' ) require( './authentication' );
 
 var express = require( 'express' );
 var app = express();
