@@ -10,7 +10,7 @@ let UserSchema = new mongoose.Schema( {
   languagesSpoken: Array,
   programmingLanguages: Array,
   unreadMessages: Number,
-  contacts: Array,
+  contacts: Array, // should be obj with image = { username: jacksonbatestest, avatar: blah... }
   conversations: Array,
 } );
 

@@ -53,7 +53,7 @@ export default function AddPairingNoticeForm( {
         name="other"
         id="other"
         title="Keep it to a minimum of 30 characters"
-        pattern=".{0}|.{1,30}"
+        pattern=".{0,30}"
         value={other}
         onChange={handleFieldChange}
       />
@@ -62,7 +62,7 @@ export default function AddPairingNoticeForm( {
         name="interests"
         id="interests"
         title="Keep it to a minimum of 30 characters"
-        pattern=".{0}|.{1,30}"
+        pattern=".{0,30}"
         value={interests}
         onChange={handleFieldChange}
       />

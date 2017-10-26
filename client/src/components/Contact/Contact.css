@@ -1,0 +1,86 @@
+
+.Contact_container {
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;
+  padding: .5rem;
+  margin: .5rem;
+  background-color: #FCFCFC;
+  flex: 1 1 48%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.Contact_image-link {
+  display: block;
+  margin: auto 5px;
+}
+
+.Contact_image {
+  border-radius: 50%;
+  width: 120px;
+  height: auto;
+  margin: 0;
+}
+
+.Contact_image:hover {
+  animation: radiate 5s infinite;
+}
+
+.Contact_image-link:hover {
+  z-index: 10;
+}
+
+.Contact_info {
+  margin: auto;
+  padding: 2rem;
+  border-left: 1px solid lightgrey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.Contact_info_username {
+  font-weight: bold;
+}
+
+.Contact_info_interests {
+  font-style: italic;
+}
+
+@media (min-width: 545px) {
+  .Contact_container {
+    flex: 0 1 48%;
+  }
+}
+
+@media (max-width: 850px) {
+  .Contact_container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .Contact_info {
+    text-align: center;
+    border: none;
+    padding: .5rem;
+    min-height: 230px;
+  }
+  .Contact_info_username {
+    padding-bottom: .5rem;
+    border-bottom: 1px solid lightgrey;
+  }
+}
+
+@media (min-width: 1140px) {
+  .Contact_image {
+    margin: 1.5rem;
+  }
+}
+
+@keyframes radiate {
+  0% {
+    box-shadow: 0px 30px 30px -25px rgba(0, 0, 0, 0.6), 0px 0px 0px 0px rgba(00, 100, 00, 1), 0px 0px 0px 0px rgba(00, 100, 00, .7), 0px 0px 0px 0px rgba(00, 100, 00, .5);
+  }
+  100% {
+    box-shadow: 0px 30px 30px -25px rgba(0, 0, 0, 0.6), 0px 0px 0px 70px rgba(00, 100, 00, 0), 0px 0px 0px 200px rgba(00, 100, 00, 0), 0px 0px 0px 300px rgba(00, 100, 00, 0);
+  }
+}

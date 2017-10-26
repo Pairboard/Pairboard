@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 
 import SERVER_HOST from '../../config/config';
 import CamperImage from '../CamperImage';
+// CamperImage should be github avatar
 
 import './AuthBadge.css';
 
