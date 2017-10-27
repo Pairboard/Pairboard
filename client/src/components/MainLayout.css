@@ -19,7 +19,7 @@
   margin: 5px;
 }
 
-.MainLayout_footer { /* FIXME since this is fixed it may overlap content */
+.MainLayout_footer {
   position: fixed;
   bottom: 0;
   width: 100%;
