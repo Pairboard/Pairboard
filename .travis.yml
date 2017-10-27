@@ -9,5 +9,5 @@ before_install:
   - npm install -g npm@latest
 script:
   - npm run first
-  - npm test
+  - npm testd
   - npm run build
