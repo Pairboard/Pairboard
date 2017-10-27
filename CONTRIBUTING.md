@@ -42,13 +42,13 @@ If you would rather see this process in action first, we have a 10 minute screen
 To keep things beginner friendly, you can make a completely innocuous contribution first. You can add a comment to FIRST_PR_CLUB.md!
 
 + On your forked verision of the repo on GitHub, click the green 'clone or download' button and copy the link.
-  + The link will look something like this: `https://github.com/jacksonbates/pair-backend.git` (but with your username, not mine)
+  + The link will look something like this: `https://github.com/Pairboard/Pairboard.git` (but with your username, not mine)
 + In the terminal write the following command to clone the repo. This will give you a local copy to work on:
   + `git clone <paste-the-link-of-your-repo.git-here>`
-  + eg: `git clone https://github.com/jacksonbates/pair-backend.git`
+  + eg: `git clone https://github.com/Pairboard/Pairboard.git`
 + In your terminal navigate to the folder that was just created.
   + The command for this is `cd`
-  + eg: `cd pair-backend`
+  + eg: `cd Pairboard`
 + If your version of the repo is ever out of sync with the original repo, i.e. there are new commits on the master branch of the original that you don't have, you need to sync your repo before adding your contributions. **See below, in the section called 'How to sync your local repo with the original repo' for details**
 + On your fork of this repo, locate the FIRST_PR_CLUB markdown file. It's in the root folder.
 + **Create a new branch to work on** (you'll do this for your real contributions, too).
@@ -92,9 +92,9 @@ To keep things beginner friendly, you can make a completely innocuous contributi
     You should see two links with `origin` in front of them.  
     The links will begin either with `https` or `git@`
   + Specify a new remote upstream repository that will be synced with the fork:  
-    `git remote add upstream https://github.com/JacksonBates/pair-backend.git`  
+    `git remote add upstream https://github.com/Pairboard/Pairboard.git`  
     or  
-    `git remote add upstream git@github.com:JacksonBates/pair-backend.git`  
+    `git remote add upstream git@github.com:Pairboard/Pairboard.git`  
     depending on which protocol you saw in the first step.
   + Verify the new upstream repository you've specified for your fork:  
     `git remote -v`  
