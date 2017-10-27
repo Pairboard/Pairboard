@@ -12,6 +12,7 @@ The good news is, even the most beginner level contributor can feel right at hom
 + [Git installed on your system](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 + [Node/NPM](https://nodejs.org/en/)
 + [MongoDB](https://www.mongodb.com/download-center)
++ A GitHub OAuth app (see the notes in the README.md)
 + Windows users should use `gitbash` as their terminal for working with Git.
 + Mac and Linux users can use any terminal they prefer.
 + A can-do attitude
