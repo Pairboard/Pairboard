@@ -19,18 +19,13 @@ var url = process.env.MONGODB_URI;
 // Plug in bluebird promise library
 mongoose.Promise = require( 'bluebird' );
 
-const promise = mongoose.connect( url, {
+mongoose.connect( url, {
   useMongoClient: true,
-} );
-
-promise.then( ( db ) => {
-  db.on( 'error', console.error.bind( console, 'connection error:' ) );
-  if ( !process.env.NODE_ENV === 'test' ) {
-    db.once( 'open', function () {
-      console.log( 'DB Connected' );
-    } );
+} ).then( ( db ) => {
+  if ( process.env.NODE_ENV !== 'test' ) {
+    console.log( 'DB Connected' );
   }
-} );
+} ).catch( ( err ) => console.log( err ) );
 
 // Disable x-powered-by header which shows what software server is running (express);
 app.disable( 'x-powered-by' );
