@@ -39,13 +39,9 @@ const posts = [{
 }];
 
 const populatePosts = ( done ) => {
-  Post.remove( {} ).then( () => {
-    const postOne = new Post( posts[0] ).save();
-    const postTwo = new Post( posts[1] ).save();
-    const postThree = new Post( posts[2] ).save();
-
-    return Promise.all( [postOne, postTwo, postThree] );
-  } ).then( () => done() );
+  Post.remove( {} )
+    .then( () => Post.insertMany( posts ) )
+    .then( () => done() );
 };
 
 module.exports = { posts, populatePosts };
