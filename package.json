@@ -32,7 +32,7 @@
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "express": "^4.14.0",
-    "jsonwebtoken": "^7.2.1",
+    "jsonwebtoken": "^8.3.0",
     "mobx": "^2.7.0",
     "mongodb": "^2.2.11",
     "mongoose": "^4.12.4",
@@ -41,7 +41,7 @@
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "sha1": "^1.1.1",
-    "socket.io": "^1.7.2"
+    "socket.io": "^2.1.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -53,8 +53,8 @@
     "expect": "^1.20.2",
     "istanbul": "^0.4.5",
     "mobx-react": "^4.0.4",
-    "mocha": "^3.2.0",
-    "nodemon": "^1.11.0",
-    "supertest": "^2.0.1"
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4",
+    "supertest": "^3.3.0"
   }
 }
