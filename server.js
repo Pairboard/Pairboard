@@ -46,7 +46,7 @@ passport.deserializeUser( ( id, done ) => {
 // Temporary code to test login functionality
 app.get( '/user', authCheck(), ( req, res ) => {
   const data = jwt.decode( req.cookies.token );
-  User.findById( data._doc._id ).then( user => {
+  User.findById( data._id ).then( user => {
     res.status( 201 ).json( { username: user.username } );
   } ).catch( e => res.sendStatus( 400 ) );
 } );
