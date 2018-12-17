@@ -5,7 +5,7 @@ const jwt = require( 'jsonwebtoken' );
 router.get( '/login', passport.authenticate( 'github' ) );
 
 router.get( '/github/callback', passport.authenticate( 'github', { failureRedirect: '/' } ), ( req, res ) => {
-  const token = jwt.sign( req.user, 'super_secret' );
+  const token = jwt.sign( req.user.toJSON(), 'super_secret' );
   console.log( '*' );
   console.log( `*  User ${req.user.username} with GitHub ID ${req.user.gitId} authorized!` );
   console.log( '*' );
